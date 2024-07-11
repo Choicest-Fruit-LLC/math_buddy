@@ -11,13 +11,12 @@
 
     <header>
         <div class="container">
-            <h1>Math Buddy</h1>
+            <h1>Math Buddy <img src="./img/math-buddy-logo.png"/></h1>
             <ul>
                 <li class="current"><a href="index.html">Add</a></li>
                 <li><a href="divide.html">Divide</a></li>
                 <li><a href="multiply.html">Multiply</a></li>
             </ul>
-
         </div>
     </header>
 
@@ -30,14 +29,23 @@
             <h1 style="color: grey;">?</h1>
         </div>
 
+        
+        
         <div class="answer-options">
             <h1 id="option1">1</h1>
             <h1 id="option2">2</h1>
-            <h1 id="option3">3</h1>
-
+            <h1 id="option3">3</h1>               
         </div>
-
-
+            
+            <div id="score-container">
+                <h2>Score: <span id="current-score">0</span></h2>
+            </div>
+            
+            <div id="timer-container">
+                <h3>Time Left: <span id="timer">60</span> seconds <div id="pauseButton">Pause</div> </h3>
+                
+            </div>       
+        
 
     </div>
 

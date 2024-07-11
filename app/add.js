@@ -3,7 +3,14 @@ const option2 = document.getElementById("option2");
 const option3 = document.getElementById("option3");
 const audio = document.getElementById("wrong");
 
+const currentScore = document.getElementById("current-score");
+const timerDisplay = document.getElementById("timer");
+
 let answer = 0;
+let score = 0;
+let timeLeft = 100;
+let timer;
+
 
 function generateEquation() {
     let num1 = Math.floor(Math.random() * 13);
@@ -20,7 +27,7 @@ function generateEquation() {
     do {
         dummyAnswer2 = Math.floor(Math.random() * 26);
     }
-    while (dummyAnswer2 == answer || dummyAnswer2 === dummyAnswer1);
+    while (dummyAnswer2 === answer || dummyAnswer2 === dummyAnswer1);
 
     let allAnswers = [];
     let switchAnswers = [];
@@ -41,18 +48,72 @@ function generateEquation() {
     option3.innerHTML = switchAnswers[2];
 };
 
+
+function updateScore() {
+    currentScore.textContent = score;
+}
+
+function updateTimer() {
+    timerDisplay.textContent = timeLeft;
+}
+
+function startGame() {
+    score = 0;
+    timeLeft = 60;
+    generateEquation();
+    updateScore();
+    updateTimer();
+
+    clearInterval(timer);
+    timer = setInterval(function () {
+        timeLeft--;
+        updateTimer();
+
+        if (timeLeft === 0) {
+            clearInterval(timer);
+
+            // Scroll to the top
+            window.scrollTo(0, 0);
+
+          let finalScore = score;
+            alert("Time's up! Your final score is " + finalScore);
+
+            // Reload the page
+            location.reload();
+        }
+    }, 1000);
+}
+
+function updateTime() {
+    timeLeft--;
+    document.getElementById("timer").innerHTML = timeLeft;
+
+    if (timeLeft === 0) {
+        clearInterval(timerId);
+        alert("Time's up! Your final score is " + score + ".");
+        location.reload();
+    }
+}
+
+
+
+
 option1.addEventListener("click", function () {
     if (option1.innerHTML == answer) {
+        score++;
         generateEquation();
+        updateScore();       
     } else {
-        audio.play();
+        audio.play();       
     }
 });
 
 
 option2.addEventListener("click", function () {
     if (option2.innerHTML == answer) {
+        score++;
         generateEquation();
+        updateScore();   
     } else {
         audio.play();
     }
@@ -60,12 +121,31 @@ option2.addEventListener("click", function () {
 
 option3.addEventListener("click", function () {
     if (option3.innerHTML == answer) {
+        score++;
         generateEquation();
+        updateScore();       
     } else {
         audio.play();
+      
     }
 });
 
 
-generateEquation();
 
+function updateTime() {
+    timeLeft--;
+    document.getElementById("timer").innerHTML = timeLeft;
+
+    if (timeLeft === 0) {
+        clearInterval(timerId);
+        alert("Time's up! Your final score is " + score + ".");
+        location.reload();
+    }
+}
+
+
+
+
+
+generateEquation();
+startGame();

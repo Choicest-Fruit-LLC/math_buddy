@@ -38,6 +38,14 @@ body{
     color: white;
 }
 
+img{
+    height: 80px;
+    width: 150px;
+    float: inline-start;
+   
+   
+}
+
 .current a::after{
     content: '_';
     background-color: white;
@@ -52,7 +60,7 @@ body{
 
 .equation{
     font-size: 67px;
-    background-color: white;
+    background-color: rgb(25, 24, 24);
     border-radius: 5px;
     text-align: center;
     padding-top: 15%;
@@ -108,4 +116,23 @@ body{
 #option3:hover{
     color: #fed766;
     background-color: white;
+}
+
+
+#score-container,
+#timer-container {
+    margin-top: 5%;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+#current-score {
+    font-size: 70px;
+
+}
+
+#timer {
+    color: red;
+    font-size: 60px;
+    font-weight: bold;
 }
